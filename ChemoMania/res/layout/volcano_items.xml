@@ -1,0 +1,192 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item"
+    android:orientation="vertical" >
+ <TableLayout        android:layout_width="match_parent"        android:layout_height="match_parent"        android:layout_alignParentLeft="true"        android:layout_alignParentTop="true"        android:contentDescription="@string/tlayout" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/table"
+                android:src="@drawable/table2" />
+            
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/table"
+                android:textColor="@android:color/white" />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/beaker"
+                android:src="@drawable/empty_beaker" />
+            
+        </TableRow>
+         <TableRow>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/beaker"
+                android:textColor="@android:color/white" />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/cone1"
+                android:src="@drawable/cone" />
+            
+        </TableRow>
+         <TableRow>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cone"
+                android:textColor="@android:color/white" />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/soda1"
+                android:src="@drawable/baking_soda" />
+            
+        </TableRow>
+         <TableRow>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/soda"
+                android:textColor="@android:color/white" />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/soap1"
+                android:src="@drawable/dish_soap" />
+            </TableRow>
+             <TableRow>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/soap"
+                android:textColor="@android:color/white" />
+
+        </TableRow>
+            <TableRow
+            android:id="@+id/tableRow6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/red1"
+                android:src="@drawable/red_cone" />
+            </TableRow>
+             <TableRow>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/red"
+                android:textColor="@android:color/white" />
+
+        </TableRow>
+            <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/yellow1"
+                android:src="@drawable/yellow_cone" />
+            </TableRow>
+             <TableRow>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yellow"
+                android:textColor="@android:color/white" />
+
+        </TableRow>
+            <TableRow
+            android:id="@+id/tableRow8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/vinegar1"
+                android:src="@drawable/vinegar" />
+            
+                    
+        </TableRow>
+         <TableRow>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vinegar"
+                android:textColor="@android:color/white" />
+
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>
+</ScrollView>

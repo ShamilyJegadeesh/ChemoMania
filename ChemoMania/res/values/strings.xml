@@ -1,0 +1,35 @@
+<resources>
+
+    <string name="app_name">ChemoMania</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_chemo_mania">ChemoMania</string>
+    <string name="table">Table</string>
+    <string name="glass">glass</string>
+    <string name="tlayout">Table Layout</string>
+    <string name="instruction">Acidic-Base Test</string>
+    <string name="beaker">Beaker</string>
+    <string name="cone1">cone</string>
+    <string name="cone">Paper Cone</string>
+    <string name="soda1">soda</string>
+    <string name="soda">Baking Soda</string>
+    <string name="soap1">soap</string>
+    <string name="soap">Dish Soap</string>
+    <string name="red1">red</string>
+    <string name="red">Red Food Color</string>
+    <string name="yellow1">yellow</string>
+    <string name="yellow">Yellow Food Color</string>
+    <string name="vinegar1">vinegar</string>
+    <string name="vinegar">Vinegar</string>
+    <string name="ok">OK</string>
+<string name="info">Erupting Volcano is an chemical experiment in which a small volcano is generated using some chemicals...\nCome, lets create a volcano...</string>
+<string name="cabbage">Cabbage Juice</string>
+<string name="lemon">Lemon Juice</string>
+<string name="acid">ACID TEST</string>
+<string name="base">BASE TEST</string>
+<string name="exp1">ACID-BASE Experiment</string>
+<string name="acid_base">ACID-BASE EXPERIMENT</string>
+<string name="exp2">ERUPTING VOLCANO</string>
+<string name="neutral">NEUTRAL</string>
+<string name="water">Water</string>
+</resources>

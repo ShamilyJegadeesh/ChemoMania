@@ -1,0 +1,124 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:id="@+id/tablelayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/tlayout" >
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:contentDescription="@string/table"
+                android:src="@drawable/table2"
+                android:visibility="visible" />
+
+        </TableRow>
+<TableRow >
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:text="@string/table"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/background_light" />
+   
+</TableRow>
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:src="@drawable/beaker_1"
+                android:contentDescription="@string/table" />
+
+</TableRow>
+<TableRow >
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:text="@string/beaker"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/background_light" />
+    
+</TableRow>
+  <TableRow>
+              <ImageView
+                  android:id="@+id/imageView4"
+                  android:layout_width="75dp"
+                  android:layout_height="50dp"
+                  android:contentDescription="@string/cabbage"
+                  android:src="@drawable/cabbage_juice" />
+
+</TableRow>
+
+ <TableRow >
+              <TextView
+                  android:id="@+id/textView8"
+                  android:layout_width="75dp"
+                  android:layout_height="35dp"
+                  android:text="@string/cabbage"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:textColor="@android:color/background_light" />
+   
+</TableRow>
+ <TableRow>
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/lemon"
+                android:src="@drawable/lemonjuice" />
+            
+            </TableRow>
+
+        <TableRow >
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="75dp"
+                android:layout_height="35dp"
+                android:text="@string/lemon"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/background_light" />
+    
+</TableRow>
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+        </TableRow>
+
+        
+
+    </TableLayout>
+
+</RelativeLayout>
+</ScrollView>

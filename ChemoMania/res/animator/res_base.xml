@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+     	android:oneshot="true">
+
+  <item android:drawable="@drawable/beekar10" android:duration="1000" />
+     <item android:drawable="@drawable/gbeaker1" android:duration="1000" />
+      <item android:drawable="@drawable/gbeaker2" android:duration="1000" />
+       <item android:drawable="@drawable/gbeaker3" android:duration="1000" />
+        <item android:drawable="@drawable/gbeaker4" android:duration="1000" />
+         <item android:drawable="@drawable/gbeaker5" android:duration="1000" />
+          <item android:drawable="@drawable/gbeaker6" android:duration="1000" />
+           <item android:drawable="@drawable/gbeaker7" android:duration="1000" />
+            <item android:drawable="@drawable/gbeaker8" android:duration="1000" />
+             <item android:drawable="@drawable/gbeaker8" android:duration="1000" />
+</animation-list>
