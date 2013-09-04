@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Science_Helper extends Activity implements OnClickListener {
+public class Experiment extends Activity implements OnClickListener {
 
 	/** Called when the activity is first created. */
 	@Override

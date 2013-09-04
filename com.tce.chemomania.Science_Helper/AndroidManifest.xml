@@ -26,6 +26,9 @@
         <activity android:name="Erupting_Volcano"></activity>
         <activity android:name="base_exp"></activity>
         <activity android:name="Neutral"></activity>
+        <activity android:name="Experiment"></activity>
+        <activity android:name="Syllabus"></activity>
+        <activity android:name="Domain"></activity>
     </application>
 
 </manifest>

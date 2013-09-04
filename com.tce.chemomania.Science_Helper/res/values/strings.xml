@@ -32,4 +32,12 @@
 <string name="exp2">ERUPTING VOLCANO</string>
 <string name="neutral">NEUTRAL</string>
 <string name="water">Water</string>
+<string name="cbse">CBSE</string>
+<string name="sk">Samacheer Kalvi</string>
+<string name="sixth">6TH</string>
+<string name="seventh">7TH</string>
+<string name="eighth">8TH</string>
+<string name="physics">Physics</string>
+<string name="chemistry">Chemistry</string>
+<string name="biology">Biology</string>
 </resources>

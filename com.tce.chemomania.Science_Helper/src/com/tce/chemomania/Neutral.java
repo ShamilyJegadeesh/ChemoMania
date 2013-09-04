@@ -1,5 +1,6 @@
 package com.tce.chemomania;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
@@ -19,19 +20,20 @@ import android.widget.*;
 import android.widget.RelativeLayout.LayoutParams;
 
 @SuppressLint({ "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi" })
-public class base_exp extends Activity implements  OnClickListener{
+public class Neutral extends Activity implements  OnClickListener{
 
-	public ImageView glass,table,cabbageJuice,soda;
+	public ImageView glass,table,cabbageJuice,water,vinegar;
 	public static boolean canAnimate=true;
 static ImageView beaker,beaker1,beaker2;
  AnimationDrawable frameAnimation;
 public int i=0,j=75;
-String ins[]={"Place a table","Place a beaker on the table","Pour Cabbage Juice","Add Baking Soda","Result:\nChange in color indicates\n that Baking soda is\n alkaline by nature"};
+MediaPlayer mp;
+String ins[]={"Place a table","Place a beaker on the table","Pour Cabbage Juice","Add Water","Result:\n Water does not make any color\nchange which indicates\nthat it is neutral"};
 final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT); 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        setContentView(R.layout.activity_neutral);
         	//onclick listener for table
            table=(ImageView)findViewById(R.id.imageView2);
            table.setOnClickListener(this);
@@ -42,11 +44,9 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
          //onclick listener for cabbageJuice
            cabbageJuice=(ImageView)findViewById(R.id.imageView4);
            cabbageJuice.setOnClickListener(this);
-         //onclick listener for lemonJuice
-          
-           //onclick listener for soda
-           soda=(ImageView)findViewById(R.id.imageView5);
-           soda.setOnClickListener(this);
+         //onclick listener for water
+           water=(ImageView)findViewById(R.id.imageView5);
+           water.setOnClickListener(this);
         
            Typeface type = Typeface.createFromAsset(getAssets(),"fonts/bell.ttf"); 
            TextView t1=(TextView)findViewById(R.id.textView6);
@@ -90,6 +90,8 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 	     RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(250,600);
 	     addContentView(table,param);
 	     i++;
+	     mp=MediaPlayer.create(this,R.drawable.place_beaker);
+			mp.start();
 	     instruct();
 			}
 	     break;
@@ -112,6 +114,8 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 			//start moving beaker
 			animat.start();
 			i++;
+			mp=MediaPlayer.create(this,R.drawable.pour_cabbage);
+			mp.start();
 			instruct();
 		}
 			break;
@@ -119,7 +123,7 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 			
 			//cabbage juice
 			if(i==2){
-				AlertDialog alertDialog = new AlertDialog.Builder(base_exp.this).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(Neutral.this).create();
 				alertDialog.setTitle("Cabbage Juice");
 				alertDialog.setMessage("Cabbage Juice is used as \"INDICATOR\"." +
 						/*"An indicator is typically a chemical that changes color if it comes in contact with an ACID or a BASE.\n" +
@@ -157,48 +161,54 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 					frameAnimation=(AnimationDrawable)beaker2.getBackground();
 					frameAnimation.start();
 					i++;
-					instruct();
+					
 		        }});
 				alertDialog.show();
+				mp=MediaPlayer.create(this,R.drawable.p_water);
+				mp.start();
+				instruct();
 			
 			}
 			break;
 			
 	case R.id.imageView5:
 			                           
-		   //soda
+		   //water
 			if(i==3){
-				AlertDialog alertDialog = new AlertDialog.Builder(base_exp.this).create();
-				alertDialog.setTitle("Baking Soda");
-				alertDialog.setMessage("Soda is a alkali in nature(contains sodium hydroxide).The pigments of purple cabbage turns green in base environments with a pH greater than 7");
+				AlertDialog alertDialog = new AlertDialog.Builder(Neutral.this).create();
+				alertDialog.setTitle("Water");
+				alertDialog.setMessage("Water has a pH value of 7. It is neutral in nature");
 				alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 		        public void onClick(DialogInterface dialog, int which) {
-			ImageView yellowDrop=new ImageView(getApplicationContext());
-			yellowDrop.setImageResource(R.drawable.white_drop);
-			yellowDrop.setX(450);
-			yellowDrop.setY(0);
+			ImageView whiteDrop=new ImageView(getApplicationContext());
+			whiteDrop.setImageResource(R.drawable.white_drop);
+			whiteDrop.setX(450);
+			whiteDrop.setY(0);
 			
 			RelativeLayout.LayoutParams b_param1 = new RelativeLayout.LayoutParams(150,200);
-			addContentView(yellowDrop, b_param1);
+			addContentView(whiteDrop, b_param1);
 			AnimatorSet animater=(AnimatorSet)AnimatorInflater.loadAnimator(getApplicationContext(),R.animator.test);
-			animater.setTarget(yellowDrop);
+			animater.setTarget(whiteDrop);
 			animater.start();
 			
 			beaker2=new ImageView(getApplicationContext());
-			beaker2.setImageResource(R.drawable.dots);
+			beaker2.setImageResource(R.drawable.nw8);
 			beaker2.setX(440);
 			beaker2.setY(160);
 			addContentView(beaker2, new RelativeLayout.LayoutParams(160,110));
-			beaker2.setBackgroundResource(R.animator.res_base);
-			yellowDrop.bringToFront();
+			//beaker2.setBackgroundResource(R.animator.res_acid);
+			//whiteDrop.bringToFront();
 			//beaker2.bringToFront();
-			frameAnimation=(AnimationDrawable)beaker2.getBackground();
-			frameAnimation.start();
+			//frameAnimation=(AnimationDrawable)beaker2.getBackground();
+			//frameAnimation.start();
 			beaker2.bringToFront();
 			i++;
-			instruct();
+			
 		        }});
-				alertDialog.show();   
+				alertDialog.show(); 
+				mp=MediaPlayer.create(this,R.drawable.neutral_result);
+				mp.start();
+				instruct();
 			}
 			break;
 			
@@ -250,7 +260,7 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 	    text.setText((i+1)+". "+ins[i]);
 	    text.setX(50);
 	    text.setY(j);
-	   Typeface type = Typeface.createFromAsset(getAssets(),"fonts/bell.ttf"); 
+	   Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Koala.ttf"); 
 	   text.setTypeface(type);
 	    text.setTextColor(Color.YELLOW);
 	    text.setTextSize(20);

@@ -1,5 +1,6 @@
 package com.tce.chemomania;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
@@ -7,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
@@ -20,23 +20,20 @@ import android.widget.*;
 import android.widget.RelativeLayout.LayoutParams;
 
 @SuppressLint({ "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi", "NewApi" })
-public class ChemoMania extends Activity implements  OnClickListener{
+public class base_exp extends Activity implements  OnClickListener{
 
-	public ImageView glass,table,cabbageJuice,lemonJuice,soda,water;
+	public ImageView glass,table,cabbageJuice,soda;
 	public static boolean canAnimate=true;
 static ImageView beaker,beaker1,beaker2;
  AnimationDrawable frameAnimation;
-
- TextView lt,st,wt;
 public int i=0,j=75;
-String ins[]={"Place a table","Place a beaker on the table","Pour Cabbage Juice","Add Lemonade","Result\n Change in Color indicates\n Lemon is acidic in nature."};
+MediaPlayer mp;
+String ins[]={"Place a table","Place a beaker on the table","Pour Cabbage Juice","Add Baking Soda","Result:\nChange in color indicates\n that Baking soda is\n alkaline by nature"};
 final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT); 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chemo_mania);
-       
-        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Koala.ttf"); 
+        setContentView(R.layout.activity_base);
         	//onclick listener for table
            table=(ImageView)findViewById(R.id.imageView2);
            table.setOnClickListener(this);
@@ -47,40 +44,18 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
          //onclick listener for cabbageJuice
            cabbageJuice=(ImageView)findViewById(R.id.imageView4);
            cabbageJuice.setOnClickListener(this);
-           
-           lemonJuice=(ImageView)findViewById(R.id.imageView5);
-           lemonJuice.setOnClickListener(this);
          //onclick listener for lemonJuice
-           /*lemonJuice=new ImageView(this);
-           soda=new ImageView(this);
-           water=new ImageView(this);
-          test=getIntent();
-           int test_type=test.getIntExtra("Test",0);
-           if(test_type==1)
-           {
-        	    lemonJuice.setImageResource(R.drawable.lemon);
-   				lemonJuice.setX(440);
-   				lemonJuice.setY(100);
-   			//delegating frame animation to beaker
-   		    RelativeLayout.LayoutParams b_param = new RelativeLayout.LayoutParams(75,75);
-   			//add beaker to layout
-   		 addContentView(lemonJuice, b_param);
-   			lt=new TextView(this);
-   			lt.setText("Lemon Juice");
-   			lt.setX(480);
-   			lt.setY(202);
-   		 RelativeLayout.LayoutParams text_param = new RelativeLayout.LayoutParams(75,35);
-   		 addContentView(lt, text_param);
-           }else if(test_type==2){
-        	   
-           }else
-           {
-        	   
-           }*/
+          
+           //onclick listener for soda
+           soda=(ImageView)findViewById(R.id.imageView5);
+           soda.setOnClickListener(this);
+        
+           Typeface type = Typeface.createFromAsset(getAssets(),"fonts/bell.ttf"); 
+           
            TextView t11=(TextView)findViewById(R.id.textView1);
            t11.setTypeface(type);
 		   t11.setTextColor(Color.YELLOW);
-          
+		   
            TextView t1=(TextView)findViewById(R.id.textView6);
            t1.setTypeface(type);
 		   t1.setTextColor(Color.YELLOW);
@@ -93,6 +68,7 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 		   TextView t4=(TextView)findViewById(R.id.textView9);
            t4.setTypeface(type);
 		   t4.setTextColor(Color.YELLOW);
+		   
 		   instruct();
        
 
@@ -121,6 +97,9 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 	     RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(250,600);
 	     addContentView(table,param);
 	     i++;
+	     mp=MediaPlayer.create(this,R.drawable.place_beaker);
+		 mp.start();
+			
 	     instruct();
 			}
 	     break;
@@ -133,6 +112,7 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 			beaker1.setImageResource(R.drawable.beaker_1);
 			beaker1.setX(440);
 			beaker1.setY(0);
+			
 			//delegating frame animation to beaker
 		    RelativeLayout.LayoutParams b_param = new RelativeLayout.LayoutParams(150,200);
 			//add beaker to layout
@@ -143,6 +123,8 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 			//start moving beaker
 			animat.start();
 			i++;
+			mp=MediaPlayer.create(this,R.drawable.pour_cabbage);
+			mp.start();
 			instruct();
 		}
 			break;
@@ -150,14 +132,9 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 			
 			//cabbage juice
 			if(i==2){
-				AlertDialog alertDialog = new AlertDialog.Builder(ChemoMania.this).create();
+				AlertDialog alertDialog = new AlertDialog.Builder(base_exp.this).create();
 				alertDialog.setTitle("Cabbage Juice");
 				alertDialog.setMessage("Cabbage Juice is used as \"INDICATOR\"." +
-						/*"An indicator is typically a chemical that changes color if it comes in contact with an ACID or a BASE.\n" +
-						"Purple cabbage contains a water-soluble pigment called \"Anthocyanin\" that changes color when it is mixed with an acid or a base. " +
-						"The pigment turns red in acidic environments with a pH less than 7 & the pigment turns bluish-green in" +
-						" alkaline (basic) environments with a pH greater than 7." +
-						"" +*/
 						"Indicators are chemical compounds that can be added to a solution to determine whether it is acidic or alkaline(base). "+
 "The indicator will change colour depending on whether an acid or an alkali is added."+ 
 "The colour in purple cabbage (it is a pigment called an anthocyanin) makes a very good indicator.");
@@ -188,24 +165,28 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 					frameAnimation=(AnimationDrawable)beaker2.getBackground();
 					frameAnimation.start();
 					i++;
-					instruct();
 		        }});
 				alertDialog.show();
+					mp=MediaPlayer.create(this,R.drawable.p_soda);
+					mp.start();
+					instruct();
+					
+		       
 			
 			}
 			break;
 			
 	case R.id.imageView5:
 			                           
-		   //Lemon Juice
+		   //soda
 			if(i==3){
-				AlertDialog alertDialog = new AlertDialog.Builder(ChemoMania.this).create();
-				alertDialog.setTitle("Lemone Juice");
-				alertDialog.setMessage("Lemon Juice is Acidic in nature(contains citric acid).The pigments of purple cabbage turns red in acidic environments with a pH less than 7");
+				AlertDialog alertDialog = new AlertDialog.Builder(base_exp.this).create();
+				alertDialog.setTitle("Baking Soda");
+				alertDialog.setMessage("Soda is a alkali in nature(contains sodium hydroxide).The pigments of purple cabbage turns green in base environments with a pH greater than 7");
 				alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 		        public void onClick(DialogInterface dialog, int which) {
 			ImageView yellowDrop=new ImageView(getApplicationContext());
-			yellowDrop.setImageResource(R.drawable.yellow_drop);
+			yellowDrop.setImageResource(R.drawable.white_drop);
 			yellowDrop.setX(450);
 			yellowDrop.setY(0);
 			
@@ -220,56 +201,23 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 			beaker2.setX(440);
 			beaker2.setY(160);
 			addContentView(beaker2, new RelativeLayout.LayoutParams(160,110));
-			beaker2.setBackgroundResource(R.animator.res_acid);
+			beaker2.setBackgroundResource(R.animator.res_base);
 			yellowDrop.bringToFront();
 			//beaker2.bringToFront();
 			frameAnimation=(AnimationDrawable)beaker2.getBackground();
 			frameAnimation.start();
 			beaker2.bringToFront();
 			i++;
-			instruct();
 		        }});
-				alertDialog.show();   
+				alertDialog.show(); 
+			mp=MediaPlayer.create(this,R.drawable.base_result);
+			mp.start();
+			instruct();
+		         
 			}
 			break;
 			
-	/*case R.id.imageView1:
-        
-		   //soda
-		if(i==4){
-			AlertDialog alertDialog = new AlertDialog.Builder(ChemoMania.this).create();
-			alertDialog.setTitle("Soda(NaOH)");
-			alertDialog.setMessage("Soda is a alkali in nature(contains sodium hydroxide).The pigments of purple cabbage turns green in base environments with a pH greater than 7");
-			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-	        public void onClick(DialogInterface dialog, int which) {
-			ImageView whiteDrop=new ImageView(getApplicationContext());
-			whiteDrop.setImageResource(R.drawable.white_drop);
-			whiteDrop.setX(450);
-			whiteDrop.setY(0);
-			
-			RelativeLayout.LayoutParams b_param1 = new RelativeLayout.LayoutParams(150,200);
-			addContentView(whiteDrop, b_param1);
-		AnimatorSet	 animater=(AnimatorSet)AnimatorInflater.loadAnimator(getApplicationContext(),R.animator.test);
-			animater.setTarget(whiteDrop);
-			animater.start();
-			
-			beaker2=new ImageView(getApplicationContext());
-			beaker2.setImageResource(R.drawable.dots);
-			beaker2.setX(440);
-			beaker2.setY(160);
-			addContentView(beaker2, new RelativeLayout.LayoutParams(160,110));
-			beaker2.setBackgroundResource(R.animator.res_base);
-			whiteDrop.bringToFront();
-			//beaker2.bringToFront();
-			frameAnimation=(AnimationDrawable)beaker2.getBackground();
-			frameAnimation.start();
-			//beaker2.bringToFront();
-	        }});
-			alertDialog.show();   
-			
-		}
-			break;
-			*/
+	
 		}
 	}
 	
@@ -281,16 +229,13 @@ final RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(Layo
 	    text.setText((i+1)+". "+ins[i]);
 	    text.setX(50);
 	    text.setY(j);
-	   Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Koala.ttf"); 
+	    Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Koala.ttf"); 
 	   text.setTypeface(type);
 	    text.setTextColor(Color.YELLOW);
 	    text.setTextSize(20);
 	    addContentView(text,params1);
 	    j=j+30;
-	    /*} catch (InterruptedException e) {
-	        // TODO Auto-generated catch block
-	        e.printStackTrace();
-	    }*/
+	   
 	    }
 
 	

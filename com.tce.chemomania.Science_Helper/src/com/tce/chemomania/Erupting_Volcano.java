@@ -1,5 +1,6 @@
 package com.tce.chemomania;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.animation.AnimatorInflater;
@@ -30,8 +31,9 @@ TextView t;
 Boolean canAnimate=false;
 int i=0,j=80,cnt=0;
 static Thread th;
-ImageView iv1,iv2,iv3,iv4;
+ImageView iv1,iv2,iv3,iv4,iv5;
 AnimationDrawable frameAnimation;
+MediaPlayer mp;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +67,7 @@ AnimationDrawable frameAnimation;
 			alertDialog.show();
 			TextView t=(TextView) findViewById(R.id.textView1);
 			t.setText("ERUPTING VOLCANO");
-			t.setTextSize(20);
-			Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Koala.ttf"); 
+			Typeface type = Typeface.createFromAsset(getAssets(),"fonts/bell.ttf"); 
 			TextView t1=(TextView) findViewById(R.id.textView9);
 			t1.setTypeface(type);
 			t1.setTextColor(Color.GREEN);
@@ -126,15 +127,17 @@ public void onClick(View v) {
 	case R.id.imageView1:
 		if(i==0)
 		{
+		
 		canAnimate=false;
 		i++;
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(300,550);
-	
 		ImageView iv=new ImageView(this);
 		iv.setImageResource(R.drawable.table2);
 		iv.setX(400);
 		iv.setY(0);
 		addContentView(iv,lp);
+		mp=MediaPlayer.create(this,R.drawable.place_beaker);
+		mp.start();
 		instruct();
 		
 		//instruct();
@@ -158,6 +161,8 @@ public void onClick(View v) {
 	    sunSet.setTarget(iv4);
 	    //start the animation
 	    sunSet.start();
+	    mp=MediaPlayer.create(this,R.drawable.paper_cone);
+		mp.start();
 	    instruct();
 	  
 
@@ -181,6 +186,8 @@ public void onClick(View v) {
 	    sunSet.setTarget(iv1);
 	    //start the animation
 	    sunSet.start();
+	    mp=MediaPlayer.create(this,R.drawable.p_baking_soda);
+		mp.start();
 	    instruct();
 	  
 	    //instruct();
@@ -208,7 +215,8 @@ public void onClick(View v) {
 		    	    //start the animation
 		    	    sunSet.start();
 		    	    iv1.bringToFront();
-		    	    
+		    	    mp=MediaPlayer.create(this,R.drawable.p_dish_soap);
+		    		mp.start();
 		    	    instruct();
 		    	    
 		     
@@ -236,6 +244,8 @@ public void onClick(View v) {
 	    sunSet.start();
 
 	    iv1.bringToFront();
+	    mp=MediaPlayer.create(this,R.drawable.p_red);
+		mp.start();
 	    instruct();
 		}
 	    break;
@@ -257,6 +267,8 @@ public void onClick(View v) {
 	    //start the animation
 	    sunSet.start();
 	    iv1.bringToFront();
+	    mp=MediaPlayer.create(this,R.drawable.p_yellow);
+		mp.start();
 	    instruct();
 		}
 	    break;
@@ -266,18 +278,20 @@ public void onClick(View v) {
 			i++;
 		canAnimate=false;
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(350,150);
-		ImageView iv=new ImageView(this);
-		iv.setImageResource(R.drawable.yellow_drop);
-		iv.setX(380);
-		iv.setY(0);
-		addContentView(iv,lp);
+		iv5=new ImageView(this);
+		iv5.setImageResource(R.drawable.yellow_drop);
+		iv5.setX(380);
+		iv5.setY(0);
+		addContentView(iv5,lp);
 	    //load the sun movement animation
 	    AnimatorSet sunSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.swing3);
 	    //set the view as target
-	    sunSet.setTarget(iv);
+	    sunSet.setTarget(iv5);
 	    //start the animation
 	    sunSet.start();
 	    iv1.bringToFront();
+	    mp=MediaPlayer.create(this,R.drawable.p_vinegar);
+		mp.start();
 	    instruct();
 		}
 	    break;
@@ -301,6 +315,7 @@ public void onClick(View v) {
     
    iv1.setVisibility(ImageView.INVISIBLE);
    iv4.setVisibility(ImageView.INVISIBLE);
+   iv5.setVisibility(ImageView.INVISIBLE);
    
     iv2=new ImageView(this);
     iv2.setImageResource(R.drawable.dots);
@@ -312,19 +327,35 @@ public void onClick(View v) {
     //pinkDrop.bringToFront();
     frameAnimation=(AnimationDrawable)iv2.getBackground();
     frameAnimation.start();
-
-   // instruct();
+    Toast.makeText(getApplicationContext(), "Wow...Exciting volcano\n is getting erupted...", Toast.LENGTH_LONG).show();
+   //instruct();
+    AlertDialog alertDialog = new AlertDialog.Builder(Erupting_Volcano.this).create();
+	alertDialog.setTitle("What actually happens was.....");
+	alertDialog.setMessage("NaHCO3 + CH3COOH --> CH3COONa + H2CO3\nThe H2CO3 is carbonic acid which very quickly breaks down into carbon dioxide (CO2) and water (H2O).\n The carbon dioxide is what causes the bubbling and foaming when baking soda and vinegar are mixed.\n Pretty cool!");
+	alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+    public void onClick(DialogInterface dialog, int which) {   
+    }});
+	alertDialog.show();
+    //show_dialog();
+	mp=MediaPlayer.create(this,R.drawable.volcano_result);
+	mp.start();
 	}
     break;
 	}
 	}
+
 public void instruct()
 {
-String ins[]={"Place a table","Place a beaker on the table","Place a cone over the beaker","Add Baking Soda","Add Dish soap","Add red color","Add yellow color","Add Vinegar","Now,appears the volcano..."};
+String ins[]={"Place a table","Lay a beaker on the table","Lay paper cone over beaker","Put in some Baking Soda","Adjoin drops of Dish soap","Add red food color","Add yellow food color","Affix some Vinegar"};
 //canAnimate=true;
 RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 //try {
-	//Thread.sleep(1000);
+
+/*Thread.sleep(3000);
+} catch (InterruptedException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}*/
 TextView text=new TextView(this);
 text.setText((i+1)+". "+ins[i]);
 text.setX(50);
@@ -335,9 +366,17 @@ text.setTextColor(Color.YELLOW);
 text.setTextSize(20);
 addContentView(text,params1);
 j=j+30;
-/*} catch (InterruptedException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
+/*if(i==0)
+{
+	try
+	{
+		Thread.sleep(10000);	
+
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
 }*/
 }
 }
